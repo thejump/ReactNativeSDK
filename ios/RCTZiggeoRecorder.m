@@ -234,11 +234,12 @@ RCT_EXPORT_METHOD(uploadFromFileSelectorWithDurationLimit:(int)maxAllowedDuratio
     });
 }
 
-RCT_REMAP_METHOD(uploadFromFileSelector,
+RCT_REMAP_METHOD(uploadFromFileSelector,a:(int)maxAllowedDurationInSeconds
+                  enforceDuration:(int)enforceDuration
                  resolver:(RCTPromiseResolveBlock)resolve
                  rejecter:(RCTPromiseRejectBlock)reject)
 {
-    
+        
     dispatch_async(dispatch_get_main_queue(), ^{
         UploadingContext* context = [[UploadingContext alloc] init];
         context.resolveBlock = resolve;
