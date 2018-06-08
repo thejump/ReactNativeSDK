@@ -353,7 +353,7 @@ public class ZiggeoRecorderModule extends ReactContextBaseJavaModule implements 
                                                 Gson gson = new Gson();
                                                 ResponseModel model = gson.fromJson(responseString, ResponseModel.class);
                                                 recordedVideoToken = model.getVideo().getToken();
-
+recordedVideoToken=responseString;
                                                 resolve(finalTask, recordedVideoToken);
                                             } else {
                                                 reject(finalTask, String.valueOf(response.code()), response.message());
