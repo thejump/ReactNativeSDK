@@ -72,7 +72,7 @@
 {
     if(error == nil)
     {
-        [self resolve:token];
+        [self resolve:json];
     }
     else
     {
