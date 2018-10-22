@@ -81,9 +81,16 @@
 }
 
 -(void) videoPreparingToUploadWithPath:(NSString*)sourcePath {}
--(void) videoPreparingToUploadWithPath:(NSString*)sourcePath token:(NSString*)token {}
+-(void) videoPreparingToUploadWithPath:(NSString*)sourcePath token:(NSString*)token 
+       {
+    if(_recorder != nil) [_recorder sendEventWithName:@"UploadProgress" body:@{@"bytesSent": @(0), @"totalBytes":@(100), @"fileName":@"", @"token":token }];
+}
 
--(void) videoUploadStartedWithPath:(NSString*)sourcePath token:(NSString*)token backgroundTask:(NSURLSessionTask*)uploadingTask {}
+-(void) videoUploadStartedWithPath:(NSString*)sourcePath token:(NSString*)token backgroundTask:(NSURLSessionTask*)uploadingTask 
+    {
+    if(_recorder != nil) [_recorder sendEventWithName:@"UploadProgress" body:@{@"bytesSent": @(0), @"totalBytes":@(100), @"fileName":@"", @"token":token }];
+}
+
 -(void) videoUploadProgressForPath:(NSString*)sourcePath token:(NSString*)token totalBytesSent:(int)bytesSent totalBytesExpectedToSend:(int)totalBytes
 {
     if(_recorder != nil) [_recorder sendEventWithName:@"UploadProgress" body:@{@"bytesSent": @(bytesSent), @"totalBytes":@(totalBytes), @"fileName":sourcePath, @"token":token }];
