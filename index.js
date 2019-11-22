@@ -5,7 +5,7 @@ const { RCTZiggeoPlayer } = NativeModules;
 export default {
 	// ZiggeoRecorder
 	setAppToken: function (appToken: string) {
-    global.warn('aaa',NativeModules)
+   // global.warn('aaa',NativeModules)
     RCTZiggeoPlayer.setAppToken(appToken);
   	},
   	play: function (videoId: string) {
